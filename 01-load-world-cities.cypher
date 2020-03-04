@@ -21,4 +21,5 @@ MERGE (c:City {
     population: coalesce(toInteger(coalesce(line.population, 0)), 0)
 })
 
-MERGE (c)-[:IN]->(country);
+MERGE (c)-[:IN]->(country)
+RETURN count(c) as CitiesLoaded;

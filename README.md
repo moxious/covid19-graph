@@ -7,6 +7,17 @@ small dataset at this point.
 
 The original forked JHU data in raw CSV form [can be found here](https://github.com/moxious/COVID-19/)
 
+## Resulting Graph Shape
+
+Simplified representation of what kind of data you end up with:
+
+```
+(:Region)<-[:IN]-(:Province)-[:REPORTED]->(:Report { confirmed, deaths, recovered, latitude, longitude, lastUpdate, reportDate }),
+(:Report)-[:NEARBY]->(:City)-[:IN]->(:Country),
+(:Region)-[:IS]->(:Country)
+(:Province)-[:IS]->(:City)
+```
+
 ## Requirements to Use This
 
 * This repo assumes Neo4j 4.0!  There were some subtle changes to cypher, things like toInt -> toInteger,

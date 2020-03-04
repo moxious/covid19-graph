@@ -6,6 +6,8 @@ WITH coalesce(line.`Province/State`, 'General') as province,
      coalesce(line.`Country/Region`, 'Missing') as region,
      datetime(line.`Last Update`) as lastUpdate,
      date(datetime({ epochMillis: apoc.date.parse(replace("$file", ".csv", ""), 'ms', 'MM-dd-yyyy') })) as reportDate,
+     toFloat(line.Latitude) as latitude,
+     toFloat(line.Longitude) as longitude,
      line
 
 MERGE (p:Province { name: province })
@@ -26,10 +28,11 @@ CREATE (s:Report {
     confirmed: toInteger(coalesce(line.Confirmed, 0)),
     deaths: toInteger(coalesce(line.Deaths, 0)),
     recovered: toInteger(coalesce(line.Recovered, 0)),
-    latitude: toFloat(line.Latitude),
-    longitude: toFloat(line.Longitude)
+    latitude: latitude,
+    longitude: longitude,
+    location: point({ latitude: latitude, longitude: longitude })
 })
 
 MERGE (p)-[:IN]->(r)
-CREATE (p)-[:MEASURED]->(s)
-RETURN count(s);
+CREATE (p)-[:REPORTED]->(s)
+RETURN count(s) as ReportsLoaded;

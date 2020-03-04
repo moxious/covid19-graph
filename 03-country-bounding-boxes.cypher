@@ -22,4 +22,4 @@ SET
     c.longmax=longmax,
     c.latmax=latmax,
     c.wrapped=wrapped
-RETURN count(c);
+RETURN count(c) as CountryBoundingBoxesLoaded;
