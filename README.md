@@ -7,6 +7,14 @@ small dataset at this point.
 
 The original forked JHU data in raw CSV form [can be found here](https://github.com/moxious/COVID-19/)
 
+## Requirements to Use This
+
+* This repo assumes Neo4j 4.0!  There were some subtle changes to cypher, things like toInt -> toInteger,
+and the load scripts probably won't run on 3.5
+* You need APOC installed.
+
+Nothing else
+
 ## Usage
 
 Check the `import-all.sh` script.  Adjust particulars for your situation, and then run it to re-create a database

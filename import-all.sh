@@ -5,7 +5,9 @@ ENDPOINT=${NEO4J_URI:-$DEFAULT_ENDPOINT}
 USERNAME=${NEO4J_USERNAME:-neo4j}
 PASSWORD=${NEO4J_PASSWORD:-admin}
 
-cypher_shell="/Users/davidallen/Library/Application Support/Neo4j Desktop/Application/neo4jDatabases/database-8bf32f49-6a41-4b02-843e-dbdb50de760d/installation-4.0.1/bin/cypher-shell"
+# Use this when you need to swap out your local cypher-shell path, i.e. because you have multiple Neo4j's installed.
+cypher_shell="$HOME/Library/Application Support/Neo4j Desktop/Application/neo4jDatabases/database-8bf32f49-6a41-4b02-843e-dbdb50de760d/installation-4.0.1/bin/cypher-shell"
+# cypher_shell=`which cypher-shell`
 
 function run_cypher {
     echo "Running $1"
