@@ -19,9 +19,9 @@ run_cypher "02-administrative-units.cypher"
 run_cypher "03-country-bounding-boxes.cypher"
 
 # Load each date of COVID data.
-for dt in "03-03-2020" "03-02-2020" "03-01-2020" "02-29-2020" ; do
- export report_date=$dt
- echo "Loading COVID stats for $dt"
+for file in `cat files-to-load.list` ; do
+ export file=$file
+ echo "Loading COVID stats for $file"
  cat 04-covid19.cypher | envsubst | "$cypher_shell" -a $ENDPOINT -u $USERNAME -p $PASSWORD
 
  if [ $? -ne 0 ] ; then
