@@ -1,6 +1,11 @@
 # COVID-19 Graph
 
-Using a forked copy of Johns Hopkins data to load trends on COVID-19 infections into Neo4j
+Using a forked copy of Johns Hopkins data to load trends on COVID-19 infections into Neo4j.
+
+This repo contains cypher scripts and shell scripts to import the data into Neo4j, which is a very
+small dataset at this point.
+
+The original forked JHU data in raw CSV form [can be found here](https://github.com/moxious/COVID-19/)
 
 ## Usage
 
