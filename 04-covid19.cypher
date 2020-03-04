@@ -10,7 +10,7 @@ WITH coalesce(line.`Province/State`, 'General') as province,
 
 MERGE (p:Province { name: province })
 MERGE (r:Region { name: region })
-CREATE (s:DailyReport {
+CREATE (s:Report {
     label: region + ' ' + line.Confirmed + ' CONFIRMED ' + line.Deaths + ' Deaths ' + line.Recovered + ' Recovered',
 
     /* Critical distinction: reportDate is when the stat was reported, lastUpdate was when the province provided
@@ -19,7 +19,7 @@ CREATE (s:DailyReport {
      */
     reportDate: reportDate,
     lastUpdate: lastUpdate,
-    
+
     /* How far the province reporting is lagging.  3 means that the last stat we got was 3 days ago */
     ageInDays: duration.between(lastUpdate, reportDate).days,
     
