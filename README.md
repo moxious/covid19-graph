@@ -11,9 +11,14 @@ from scratch.
 ./import-all.sh
 ```
 
-This is a fast moving situation, so make sure to check the dates in import-all of the list of dates that
-you want to import.  I've pointed this at a forked copy of the JHU data so that it can't go missing,
+This is a fast moving situation.  
+
+I've pointed this at a forked copy of the JHU data so that it can't go missing,
 but this necessitates keeping the fork in sync.
+
+See "files-to-load.list" for a list of dated report files that will be loaded.  This must
+be maintained to some extent as new data comes in.
+
 
 
 
